@@ -1,0 +1,8 @@
+{
+    "coc.preferences.formatOnSaveFiletypes": ["*"],
+    "prettier.tabWidth": 4,
+    "diagnostic.errorSign": "",
+    "diagnostic.warningSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": ""
+}
