@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugins')
 Plug 'windwp/nvim-autopairs' 
 Plug 'lifepillar/vim-gruvbox8' "theme 
+Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
@@ -22,6 +23,9 @@ Plug 'windwp/nvim-ts-autotag'    " auto close tagPlug
 Plug 'lukas-reineke/indent-blankline.nvim' "liner line 
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} "multi select 
 Plug 'mattn/emmet-vim'
+Plug 'dense-analysis/ale'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'https://github.com/preservim/tagbar'
 call plug#end()
 
 "==============lua configs =========="
@@ -155,6 +159,7 @@ set termguicolors
 set signcolumn=yes
 set nowrap
 set number
+set relativenumber
 set scrolloff=7
 set sidescrolloff=20
 set splitbelow
@@ -209,9 +214,9 @@ nnoremap <Leader>d :bd<CR>
 
 "=================plugin configs not lua=================== "
 "color theme config for plugin ayu "
-let ayucolor="mirage"
-"colorscheme ayu
-colorscheme  onedark_vivid
+"let ayucolor="mirage"
+colorscheme ayu
+"colorscheme  gruvbox8_hard
 "comments config "
 nmap <leader>c gcc
 vmap <leader>c gc
@@ -315,5 +320,9 @@ function! OpenTerminal()
 endfunction 
 nnoremap <C-t> :call OpenTerminal()<CR>
 
-
+"emmit config for , , work 
 let g:user_emmet_leader_key=','
+"ale fixer 
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+"tagbar 
+nmap <F8> :TagbarToggle<CR>
