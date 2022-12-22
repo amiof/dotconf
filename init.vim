@@ -26,6 +26,9 @@ Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'https://github.com/preservim/tagbar'
+Plug 'vim-syntastic/syntastic'
+Plug 'easymotion/vim-easymotion'
+
 call plug#end()
 
 "==============lua configs =========="
@@ -326,3 +329,33 @@ let g:user_emmet_leader_key=','
 let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 "tagbar 
 nmap <F8> :TagbarToggle<CR>
+
+
+
+" ===========easy motion ========
+
+" <Leader>f{char} to move to {char}
+map  <Leader>q <Plug>(easymotion-bd-f)
+nmap <Leader>q <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" ====================syntaxtic=======
+ 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
