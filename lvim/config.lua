@@ -10,7 +10,8 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save.enablied = false
+lvim.format_on_save.enablied = true
+lvim.format_on_save = true
 lvim.colorscheme = "lunar"
 -- to disable icons and use a minimalist setup, uncomment the following
 -- lvim.use_icons = false
@@ -181,27 +182,27 @@ lvim.builtin.treesitter.highlight.enable = true
 --     -- let treesitter use bash highlight for zsh files as well
 --     require("nvim-treesitter.highlight").attach(0, "bash")
 --   end,
---   
+--
 --
 --
 --
 --
 -----config for lua lvim
-
----keymap 
+lvim.lsp.automatic_servers_installation = true
+---keymap
 --
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
-vim.keymap.set("i","jj","<esc>",{noremap=true})
-vim.keymap.set("i","jk","<esc>",{noremap=true})
+vim.keymap.set("i", "jj", "<esc>", { noremap = true })
+vim.keymap.set("i", "jk", "<esc>", { noremap = true })
 vim.keymap.set("n", "m", ":BufferLineCycleNex<cr>", { silent = true })
 vim.keymap.set("n", "M", ":BufferLineCyclePrev<cr>", { silent = true })
 vim.keymap.set("n", "\\", ":vsplit<cr>", { silent = true })
 vim.keymap.set("n", "|", ":split<cr>", { silent = true })
 vim.keymap.set("n", "Tn", ":tabnew<cr>", { silent = true })
-vim.keymap.set("n", "Tz", ":tabnew %<cr>",{silent=true})
-vim.keymap.set("n", "To", ":tabclose<cr>",{silent=true})
+vim.keymap.set("n", "Tz", ":tabnew %<cr>", { silent = true })
+vim.keymap.set("n", "To", ":tabclose<cr>", { silent = true })
 -- add your own keymapping
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 vim.opt.hlsearch = false
@@ -220,7 +221,7 @@ vim.opt.termguicolors = true -- set term gui colors (most terminals support this
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.opt.showmode = true -- we don't need to see things like -- INSERT -- anymore
 
------------------all confign of vim 
+-----------------all confign of vim
 -- vim.opt.backup = false -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 -- vim.opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
@@ -268,10 +269,10 @@ vim.opt.showmode = true -- we don't need to see things like -- INSERT -- anymore
 ---------------------------------------------------------------------
 lvim.plugins = {
   { "olimorris/onedarkpro.nvim" },
-  {"NLKNguyen/papercolor-theme"},
-  {"luisiacc/gruvbox-baby"},
-  {"xiyaowong/nvim-transparent"},
-  {"pangloss/vim-javascript"},
+  { "NLKNguyen/papercolor-theme" },
+  { "luisiacc/gruvbox-baby" },
+  { "xiyaowong/nvim-transparent" },
+  { "pangloss/vim-javascript" },
   {
     "phaazon/hop.nvim",
     event = "BufRead",
@@ -282,84 +283,84 @@ lvim.plugins = {
       vim.api.nvim_set_keymap("n", "t", ":HopLine<cr>", { silent = true })
     end,
   },
-{
-  "echasnovski/mini.map",
-  branch = "stable",
-  config = function()
-    require('mini.map').setup()
-    local map = require('mini.map')
-    map.setup({
-      integrations = {
-        map.gen_integration.builtin_search(),
-        map.gen_integration.diagnostic({
-          error = 'DiagnosticFloatingError',
-          warn  = 'DiagnosticFloatingWarn',
-          info  = 'DiagnosticFloatingInfo',
-          hint  = 'DiagnosticFloatingHint',
-        }),
-      },
-      symbols = {
-        encode = map.gen_encode_symbols.dot('4x2'),
-      },
-      window = {
-        side = 'right',
-        width = 20, -- set to 1 for a pure scrollbar :)
-        winblend = 15,
-        show_integration_count = false,
-      },
-    })
-  end
-},
-{
-  "nacro90/numb.nvim",
-  event = "BufRead",
-  config = function()
-  require("numb").setup {
-    show_numbers = true, -- Enable 'number' for the window while peeking
-    show_cursorline = true, -- Enable 'cursorline' for the window while peeking
-  }
-  end,
-},{
-  "p00f/nvim-ts-rainbow",
-},
-{
-  "folke/lsp-colors.nvim",
-  event = "BufRead",
-},
+  {
+    "echasnovski/mini.map",
+    branch = "stable",
+    config = function()
+      require('mini.map').setup()
+      local map = require('mini.map')
+      map.setup({
+        integrations = {
+          map.gen_integration.builtin_search(),
+          map.gen_integration.diagnostic({
+            error = 'DiagnosticFloatingError',
+            warn  = 'DiagnosticFloatingWarn',
+            info  = 'DiagnosticFloatingInfo',
+            hint  = 'DiagnosticFloatingHint',
+          }),
+        },
+        symbols = {
+          encode = map.gen_encode_symbols.dot('4x2'),
+        },
+        window = {
+          side = 'right',
+          width = 20, -- set to 1 for a pure scrollbar :)
+          winblend = 15,
+          show_integration_count = false,
+        },
+      })
+    end
+  },
+  {
+    "nacro90/numb.nvim",
+    event = "BufRead",
+    config = function()
+      require("numb").setup {
+        show_numbers = true, -- Enable 'number' for the window while peeking
+        show_cursorline = true, -- Enable 'cursorline' for the window while peeking
+      }
+    end,
+  }, {
+    "p00f/nvim-ts-rainbow",
+  },
+  {
+    "folke/lsp-colors.nvim",
+    event = "BufRead",
+  },
 
-{
-  "kevinhwang91/rnvimr",   ---rengger file  explorer
+  {
+    "kevinhwang91/rnvimr", ---rengger file  explorer
     cmd = "RnvimrToggle",
     config = function()
       vim.g.rnvimr_draw_border = 1
       vim.g.rnvimr_pick_enable = 1
       vim.g.rnvimr_bw_enable = 1
-      end,
-},
---  {
+    end,
+  },
+  --  {
   --"Pocco81/auto-save.nvim",
- -- config = function()
+  -- config = function()
   --  require("auto-save").setup()
- -- end,
---},
-{
-  "andymass/vim-matchup",
-  event = "CursorMoved",
-  config = function()
-    vim.g.matchup_matchparen_offscreen = { method = "popup" }
-  end,
-},
+  -- end,
+  --},
+  {
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end,
+  },
 
-   {
-      "mattn/emmet-vim",
-      config = function ()
-        vim.g.user_emmet_leader_key = ','
+  {
+    "mattn/emmet-vim",
+    config = function()
+      vim.g.user_emmet_leader_key = ','
 
-        vim.g.user_emmet_settings = {
-          indent_blockelement = 1,
-        }
-      end
-    },
+      vim.g.user_emmet_settings = {
+        indent_blockelement = 1,
+      }
+    end
+  },
 }
 
 
@@ -402,7 +403,7 @@ vim.g.gruvbox_baby_function_style = "NONE"
 --vim.g.gruvbox_baby_keyword_style = "italic"
 
 -- Each highlight group must follow the structure:
-ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
+ColorGroup = { fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)" }
 -- See also :h highlight-guifg
 -- Example:
 --vim.g.gruvbox_baby_highlights = {Normal = {fg = "#123123", bg = "NONE", style="underline"}}
@@ -421,7 +422,7 @@ vim.g.gruvbox_baby_transparent_mode = 1
 
 
 
-----background transparen 
+----background transparen
 --
 --
 --
@@ -448,3 +449,38 @@ vim.g.javascript_plugin_jsdoc = 1
 vim.g.javascript_plugin_ngdoc = 1
 vim.gjavascript_plugin_flow = 1
 -- })
+--
+--
+--
+-- confgi dap for debugin
+--
+--
+lvim.builtin.dap.active = true
+
+
+
+---confgi forrmatter
+--
+--
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { command = "black" },
+  {
+    command = "prettier",
+    args = { "--print-width", "100" },
+    filetypes = { "typescript", "typescriptreact" },
+  },
+}
+
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "flake8" },
+--   {
+--     command = "shellcheck",
+--     args = { "--severity", "warning" },
+--   },
+--   {
+--     command = "codespell",
+--     filetypes = { "javascript", "python" },
+--   },
+-- }
