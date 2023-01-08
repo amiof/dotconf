@@ -10,7 +10,7 @@ an executable
 
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save.enablied = true
+--lvim.format_on_save.enablied = true
 lvim.format_on_save = true
 lvim.colorscheme = "lunar"
 -- to disable icons and use a minimalist setup, uncomment the following
@@ -220,7 +220,10 @@ vim.opt.signcolumn = "yes" -- always show the sign column otherwise it would shi
 vim.opt.termguicolors = true -- set term gui colors (most terminals support this)
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.opt.showmode = true -- we don't need to see things like -- INSERT -- anymore
-
+vim.opt.termbidi = true
+--vim.opt.arabicshape = true
+--vim.opt.arabic = true
+vim.opt.fileencoding = "utf-8" -- the encoding written to a file
 -----------------all confign of vim
 -- vim.opt.backup = false -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
@@ -361,9 +364,61 @@ lvim.plugins = {
       }
     end
   },
+
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+
+  },
+  {
+    "tzachar/cmp-tabnine",
+    run = "./install.sh",
+    requires = "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+  },
+  {
+    "rmagatti/goto-preview",
+    config = function()
+      require('goto-preview').setup {
+        width = 120; -- Width of the floating window
+        height = 25; -- Height of the floating window
+        default_mappings = false; -- Bind default mappings
+        debug = false; -- Print debug information
+        opacity = nil; -- 0-100 opacity level of the floating window where 100 is fully transparent.
+        post_open_hook = nil; -- A function taking two arguments, a buffer and a window to be ran as a hook.
+        -- You can use "default_mappings = true" setup option
+        -- Or explicitly set keybindings
+        vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>");
+        vim.cmd("nnoremap gpi <cmd>lua require('goto-preview').goto_preview_implementation()<CR>");
+        vim.cmd("nnoremap gP <cmd>lua require('goto-preview').close_all_win()<CR>");
+      }
+    end
+  },
+  { 'mrshmllow/document-color.nvim', config = function()
+    require("document-color").setup {
+      -- Default options
+      mode = "background", -- "background" | "foreground" | "single"
+    }
+  end
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup({ "css", "scss", "html", "javascript", "typescript" }, {
+        RGB = true, -- #RGB hex codes
+        RRGGBB = true, -- #RRGGBB hex codes
+        RRGGBBAA = true, -- #RRGGBBAA hex codes
+        rgb_fn = true, -- CSS rgb() and rgba() functions
+        hsl_fn = true, -- CSS hsl() and hsla() functions
+        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+      })
+    end,
+
+  },
 }
-
-
 
 ----------------mini
 -- lvim.autocommands = {
@@ -472,15 +527,64 @@ formatters.setup {
   },
 }
 
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8" },
---   {
---     command = "shellcheck",
---     args = { "--severity", "warning" },
---   },
---   {
---     command = "codespell",
---     filetypes = { "javascript", "python" },
---   },
--- }
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "flake8" },
+  {
+    command = "shellcheck",
+    args = { "--severity", "warning" },
+  },
+  {
+    command = "codespell",
+    filetypes = { "javascript", "python" },
+  },
+}
+
+---------------rainbow enable
+lvim.builtin.treesitter.rainbow.enable = true
+----------config treesitter
+--
+
+
+require("nvim-treesitter.configs").setup {
+  ...,
+  rainbow = {
+    enable = true,
+    extended_mode = false,
+  },
+  autotag = {
+    enable = true,
+  },
+  --ensure_install="all",
+  ensure_installed = "all",
+  sync_install = false,
+  ignore_install = {}, -- List of parsers to ignore installing
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = { "yaml" }, -- list of language that will be disabled
+    additional_vim_regex_highlighting = true,
+  }
+}
+
+---------------config ducument color ---for show color
+local on_attach = function(client)
+
+  if client.server_capabilities.colorProvider then
+    -- Attach document colour support
+    require("document-color").buf_attach(bufnr)
+  end
+
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- You are now capable!
+capabilities.textDocument.colorProvider = {
+  dynamicRegistration = true
+}
+
+-- Lsp servers that support documentColor
+require("lspconfig").tailwindcss.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
