@@ -221,9 +221,15 @@ vim.opt.termguicolors = true -- set term gui colors (most terminals support this
 vim.opt.hidden = true -- required to keep multiple buffers and open multiple buffers
 vim.opt.showmode = true -- we don't need to see things like -- INSERT -- anymore
 vim.opt.termbidi = true
+vim.opt.foldmethod = "expr" -- folding set to "expr" for treesitter based folding
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+--vim.opt.foldlevel = 1
 --vim.opt.arabicshape = true
 --vim.opt.arabic = true
 vim.opt.fileencoding = "utf-8" -- the encoding written to a file
+
+
+
 -----------------all confign of vim
 -- vim.opt.backup = false -- creates a backup file
 -- vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
@@ -419,6 +425,7 @@ lvim.plugins = {
 
   },
 }
+
 
 ----------------mini
 -- lvim.autocommands = {
