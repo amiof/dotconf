@@ -12,9 +12,9 @@ an executable
 lvim.log.level = "warn"
 --lvim.format_on_save.enablied = true
 lvim.format_on_save = true
-lvim.colorscheme = "lunar"
+lvim.colorscheme = 'lunar'
 -- to disable icons and use a minimalist setup, uncomment the following
--- lvim.use_icons = false
+--lvim.use_icons = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
@@ -104,7 +104,7 @@ lvim.builtin.treesitter.highlight.enable = true
 -- }
 
 -- ---@usage disable automatic installation of servers
--- lvim.lsp.installer.setup.automatic_installation = false
+lvim.lsp.installer.setup.automatic_installation = true
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
 -- ---see the full default list `:lua print(vim.inspect(lvim.lsp.automatic_configuration.skipped_servers))`
@@ -282,6 +282,7 @@ lvim.plugins = {
   { "luisiacc/gruvbox-baby" },
   { "xiyaowong/nvim-transparent" },
   { "pangloss/vim-javascript" },
+  { 'echasnovski/mini.move' },
   {
     "phaazon/hop.nvim",
     event = "BufRead",
@@ -363,7 +364,7 @@ lvim.plugins = {
   {
     "mattn/emmet-vim",
     config = function()
-      vim.g.user_emmet_leader_key = ','
+      vim.g.user_emmet_leader_key = "<"
 
       vim.g.user_emmet_settings = {
         indent_blockelement = 1,
@@ -423,6 +424,15 @@ lvim.plugins = {
       })
     end,
 
+  },
+  {
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    -- optionally, override the default options:
+    config = function()
+      require("tailwindcss-colorizer-cmp").setup({
+        color_square_width = 2,
+      })
+    end
   },
 }
 
@@ -530,7 +540,7 @@ formatters.setup {
   {
     command = "prettier",
     args = { "--print-width", "100" },
-    filetypes = { "typescript", "typescriptreact" },
+    filetypes = { "typescript", "typescriptreact", "javascript" },
   },
 }
 
@@ -595,3 +605,27 @@ require("lspconfig").tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities
 })
+lvim.builtin.cmp.formatting = {
+  format = require("tailwindcss-colorizer-cmp").formatter
+}
+
+
+
+---------------mini.move
+require('mini.move').setup {
+  -- No need to copy this inside `setup()`. Will be used automatically.
+  -- Module mappings. Use `''` (empty string) to disable one.
+  mappings = {
+    -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+    left = '<M-h>',
+    right = '<M-l>',
+    down = '<M-j>',
+    up = '<M-k>',
+
+    -- Move current line in Normal mode
+    line_left = '<M-h>',
+    line_right = '<M-l>',
+    line_down = '<M-j>',
+    line_up = '<M-k>',
+  }
+}
