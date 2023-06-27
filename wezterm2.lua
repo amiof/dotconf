@@ -9,6 +9,7 @@ return {
   
   },
      font = wezterm.font("JetBrains Mono", {weight="Bold", italic=false}), 
+      enable_tab_bar = false,
      color_scheme = "Gruvbox dark, hard (base16)",
        check_for_updates = true,
   check_for_updates_interval_seconds = 86400,
