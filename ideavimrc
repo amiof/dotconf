@@ -1,0 +1,32 @@
+Plug 'easymotion/vim-easymotion'
+let mapleader=" "
+set easymotion
+Plug 'preservim/nerdtree'
+set NERDTree
+Plug 'tpope/vim-commentary'
+set commentary
+Plug 'terryma/vim-multiple-cursors'
+set multiple-cursors
+Plug 'tpope/vim-surround'
+set surround
+inoremap jk <Esc>
+inoremap jj <Esc>
+inoremap kk <Esc>
+nnoremap <leader>f <C-A-l>
+nnoremap \ :vsplit<CR>
+nnoremap <leader>hs :split<CR>
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+vnoremap > >gv
+vnoremap < <gv
+vnoremap <A-K> :move '<-2<CR>gv-gv
+vnoremap <A-j> :move '>+1<CR>gv-gv
+vmap <leader>y "+y
+nmap <leader>y "+y
+nmap <leader>p "+p
+nnoremap <leader>ww :w<CR>
+nnoremap <leader>wq :wq<CR>
+nnoremap <Leader>c :bd<CR>
+nnoremap m :tabnext<CR>
