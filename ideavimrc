@@ -1,46 +1,9 @@
-""old Config
-Plug 'easymotion/vim-easymotion'
-let mapleader=" "
-set easymotion
-Plug 'preservim/nerdtree'
-set NERDTree
-Plug 'tpope/vim-commentary'
-set commentary
-Plug 'terryma/vim-multiple-cursors'
-set multiple-cursors
-Plug 'tpope/vim-surround'
-set surround
-inoremap jk <Esc>
-inoremap jj <Esc>
-inoremap kk <Esc>
-nnoremap <leader>f <C-A-l>
-nnoremap \ :vsplit<CR>
-nnoremap <leader>hs :split<CR>
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-vnoremap > >gv
-vnoremap < <gv
-vnoremap <A-K> :move '<-2<CR>gv-gv
-vnoremap <A-j> :move '>+1<CR>gv-gv
-vmap <leader>y "+y
-nmap <leader>y "+y
-nmap <leader>p "+p
-nnoremap <leader>ww :w<CR>
-nnoremap <leader>wq :wq<CR>
-nnoremap <Leader>c :bd<CR>
-nnoremap m :tabnext<CR>
-
-
-
-""newconfig 
 "" .ideavimrc - magidc
 "" https://github.com/magidc/dotfiles/blob/master/.ideavimrc
 
 "" Settings ========================================================
 set scrolloff=10
-set number
+set num
 set relativenumber
 set showmode
 set showcmd
@@ -51,6 +14,11 @@ set visualbell
 set clipboard+=unnamed
 set clipboard+=unnamedplus
 let mapleader = " "
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+" ===============
 
 "" Choosing handlers in conflicting Intellij/IdeaVim keymaps =======
 sethandler <C-i> n-v-i:vim
@@ -169,9 +137,10 @@ map <leader>fx :action PasteMultiple<cr>
 map <leader>ft :action ActivateTODOToolWindow<cr>
 
 " Views (leader v)
-map <leader>vf :action ActivateProjectToolWindow<cr>
+map <leader>o :action ActivateProjectToolWindow<cr>
 map <leader>vp :action ActivateProblemsViewToolWindow<cr>
 map <leader>vs :action ActivateStructureToolWindow<cr>
+map <leader>vt :action ActivateTerminalToolWindow<cr>
 map <leader>vt :action ActivateTerminalToolWindow<cr>
 map <leader>vv :action ActivateServicesToolWindow<cr>
 map <leader>vd :action ActivateDebugToolWindow<cr>
@@ -206,7 +175,8 @@ nnoremap <leader>cs :action GotoSuperMethod<cr>
 nnoremap <leader>cr :action ShowUsages<cr>
 nnoremap <leader>cu :action HighlightUsagesInFile<cr>
 nnoremap <leader>cv :action QuickJavaDoc<cr>
-nnoremap <leader>cc :action CallHierarchy<CR>
+nnoremap <leader>ch :action CallHierarchy<CR>
+nnoremap <Leader>cc  :bd<CR>
 nnoremap <leader>cn :action ShowNavBar<CR>
 nnoremap <leader>cx :action FileStructurePopup<CR>
 nnoremap <leader>cb :action CompileDirty<CR>
@@ -264,6 +234,7 @@ inoremap jj <Esc>
 inoremap kk <Esc>
 " NORMAL Mode
 nnoremap m :tabnext<CR>
+nnoremap M :tabp<CR>
 
 " VISUAL MODE
 vnoremap jk <Esc>
@@ -288,11 +259,22 @@ set sneak
 set nerdtree
 set argtextobj
 set multicursor
-
-" Easymotion settings
+set textobj-entire
+set commentary
 set easymotion
-map s <Plug>(easymotion-f)
+
+"obj-entire==========
+let g:argtextobj_pairs="[:],(:),<:>"
+" Easymotion settings
+map F <Plug>(easymotion-b)
+map f <Plug>(easymotion-w)
+map <leader>ff <Plug>(easymotion-s)
+map <leader>ga <Action>(Annotate)
+map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
 set notimeout
+set ruler		" show the cursor position all the time
+set termbidi
+map <leader>vi <Action>(FileStructurePopup)
 
 " Which-key settings
 set which-key
@@ -385,7 +367,7 @@ let g:WhichKeyDesc_code_gotosupermethod = "<leader>cs Go to super method"
 let g:WhichKeyDesc_code_gotousages = "<leader>cr Show usages (References)"
 let g:WhichKeyDesc_code_highlightusages = "<leader>cu Highlight usages in file"
 let g:WhichKeyDesc_code_doc = "<leader>cv Show docs (hooVer)"
-let g:WhichKeyDesc_code_callhierarchy = "<leader>cc Show call hierarchy"
+let g:WhichKeyDesc_code_callhierarchy = "<leader>ch Show call hierarchy"
 let g:WhichKeyDesc_code_navbar = "<leader>cn Show navigation bar"
 let g:WhichKeyDesc_code_filestructure = "<leader>cx Show file structure"
 let g:WhichKeyDesc_code_build = "<leader>cb Build"
@@ -437,4 +419,3 @@ let g:WhichKeyDesc_display_fullscreen = "<leader>mf Toggle full screen"
 "me config
 nnoremap <leader>ww :w<CR>
 nnoremap <leader>wq :wq<CR>
-nnoremap <Leader>ee  :bd<CR>
