@@ -105,7 +105,7 @@ nnoremap <a-w> :action CloseAllEditorsButActive<cr>
 nnoremap <a-q> :action CloseContent<cr>
 nnoremap <a-t> :action NewScratchFile<cr>
 nnoremap <leader>wv :action SplitVertically<cr>
-nnoremap <leader>ws :action SplitHorizontally<cr>
+nnoremap <leader>ws action SplitHorizontally<cr>
 nnoremap <leader>wc :action Unsplit<cr>
 nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
 nnoremap <Leader>wn :action EditSourceInNewWindow<cr>
@@ -137,7 +137,8 @@ map <leader>fx :action PasteMultiple<cr>
 map <leader>ft :action ActivateTODOToolWindow<cr>
 
 " Views (leader v)
-map <leader>o :action ActivateProjectToolWindow<cr>
+map <leader>o :NERDTreeToggle<cr>
+"map <leader>o :action ActivateProjectToolWindow<cr>
 map <leader>vp :action ActivateProblemsViewToolWindow<cr>
 map <leader>vs :action ActivateStructureToolWindow<cr>
 map <leader>vt :action ActivateTerminalToolWindow<cr>
@@ -220,6 +221,10 @@ map <leader>md :action ToggleDistractionFreeMode<cr>
 map <leader>mz :action ToggleZenMode<cr>
 map <leader>mf :action ToggleFullScreen<cr>
 
+"toggle (leader t)===========
+map <leader>th :action ToggleInlineHintsAction<cr>
+
+
 " INSERT MODE
 inoremap jk <Esc>
 inoremap <a-s> <Del>
@@ -230,8 +235,9 @@ inoremap <a-b> <C-o>b
 inoremap <a-e> <Esc>ea
 inoremap <a-k> <ESC>:m .-2<cr>==gi
 inoremap <a-j> <ESC>:m .+1<cr>==gi
-inoremap jj <Esc>
-inoremap kk <Esc>
+"inoremap jj <Esc>
+"inoremap kk <Esc>
+
 " NORMAL Mode
 nnoremap m :tabnext<CR>
 nnoremap M :tabp<CR>
@@ -246,8 +252,8 @@ vnoremap v ^o$
 "--  Easy visual indentation
 vnoremap < <gv
 vnoremap > >gv
-nnoremap + v
 vnoremap + :action EditorSelectWord<cr>
+nnoremap + v
 vnoremap _ :action EditorUnSelectWord<cr>
 vnoremap <a-j> :m '>+1<cr>gv=gv
 vnoremap <a-k> :m '<-2<cr>gv=gv
@@ -262,6 +268,7 @@ set multicursor
 set textobj-entire
 set commentary
 set easymotion
+"set trackactionids
 
 "obj-entire==========
 let g:argtextobj_pairs="[:],(:),<:>"
@@ -271,10 +278,12 @@ map f <Plug>(easymotion-w)
 map <leader>ff <Plug>(easymotion-s)
 map <leader>ga <Action>(Annotate)
 map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+map t :action HideActiveWindow<cr>
 set notimeout
 set ruler		" show the cursor position all the time
 set termbidi
 map <leader>vi <Action>(FileStructurePopup)
+map \ :vsplit<cr>
 
 " Which-key settings
 set which-key
