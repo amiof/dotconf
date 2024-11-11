@@ -1,6 +1,6 @@
 "" .ideavimrc - magidc
 "" https://github.com/magidc/dotfiles/blob/master/.ideavimrc
- 
+
 "" Settings ========================================================
 set scrolloff=10
 set num
@@ -19,7 +19,7 @@ set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
 " ===============
- 
+
 "" Choosing handlers in conflicting Intellij/IdeaVim keymaps =======
 sethandler <C-i> n-v-i:vim
 sethandler <C-o> n-v-i:vim
@@ -29,7 +29,7 @@ sethandler <C-h> n-v-i:vim
 sethandler <C-j> n-v-i:vim
 sethandler <C-k> n-v-i:vim
 sethandler <C-l> n-v-i:vim
- 
+
 "" Key mappings ====================================================
 " NORMAL MODE
 " Edit
@@ -41,26 +41,26 @@ nnoremap caw "_caw
 nnoremap C "_C
 nnoremap cc "_cc
 nnoremap Y y$
- 
+
 "-- Replace word with paste
 nnoremap <a-p> "_diwP
 "-- Replace line with paste
 nnoremap <a-s-p> "_ddP"
- 
+
 nnoremap <a-j> :m .+1<cr>==
 nnoremap <a-k> :m .-2<cr>==
- 
+
 nnoremap <a-d> "_diw
 nnoremap <a-c> "_ciw
 nnoremap <a-s-d> ]b[w"_d]w
 nnoremap <a-s-c> ]b[w"_c]w
 nnoremap <a-z> "_ci"
 nnoremap <a-x> "_ci(
- 
+
 "-- Change function argument
 "nnoremap <a-a> cia
 "nnoremap <a-s> daa
- 
+
 "--  Method text objects operation replacement
 nnoremap vam j:action MethodUp<cr>0v]M
 nnoremap vim j:action MethodUp<cr>]m<cr>v]M<bs>
@@ -70,10 +70,10 @@ nnoremap yam j:action MethodUp<cr>0v]My
 nnoremap yim j:action MethodUp<cr>]m<cr>v]M<bs>y
 nnoremap cam j:action MethodUp<cr>0v]M"_c
 nnoremap cim j:action MethodUp<cr>]m<cr>v]M<bs>"_c
- 
+
 nmap <a-o> mao<ESC>`a
 nmap <a-s-o> maO<ESC>`a
- 
+
 " Motions
 nnoremap H ^
 nnoremap L $
@@ -84,7 +84,7 @@ nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 nnoremap n nzz
 nnoremap N Nzz
- 
+
 "--  Class motions
 nnoremap [c :call search('\<class\>', 'bW')<cr> ^
 nnoremap ]c :call search('\<class\>', 'W')<cr> ^
@@ -92,10 +92,10 @@ nnoremap [C :call search('\<class\>', 'bW')<cr> f{%
 nnoremap ]C :call search('\<class\>', 'W')<cr> f{%
 nnoremap vic gg :action MethodDown<cr>f{vi{
 nnoremap vac gg :action MethodDown<cr>f{va{
- 
+
 nnoremap <C-o> :action Back<cr>
 nnoremap <C-i> :action Forward<cr>
- 
+
 " Window navigation
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
@@ -109,17 +109,17 @@ nnoremap <leader>ws :action SplitHorizontally<cr>
 nnoremap <leader>wc :action Unsplit<cr>
 nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
 nnoremap <Leader>wn :action EditSourceInNewWindow<cr>
- 
+
 " Folds
 map | :action CollapseAllRegions<cr>
 map -- :action ExpandAllRegions<cr>
 map zm :action ExpandCollapseToggleAction<cr>
- 
+
 " Macros and registers
 "--  Execute macro saved in 'q' register
 nnoremap qj @q
 nnoremap t "_
- 
+
 " Find (leader f)
 nnoremap ;; :nohlsearch<cr>
 map <leader>fe :action GotoClass<cr>
@@ -135,7 +135,7 @@ map <leader>fr :action Replace<cr>
 map <leader>fR :action ReplaceInPath<cr>
 map <leader>fx :action PasteMultiple<cr>
 map <leader>ft :action ActivateTODOToolWindow<cr>
- 
+
 " Views (leader v)
 map <leader>o :NERDTreeToggle<cr>
 "map <leader>o :action ActivateProjectToolWindow<cr>
@@ -149,7 +149,7 @@ map <leader>vg :action ActivateVersionControlToolWindow<cr>
 map <leader>vo :action ActivateTODOToolWindow<cr>
 map <leader>vc :action ActivateGitHubCopilotChatToolWindow<cr>
 map <leader>vq :action CloseActiveTab<cr>
- 
+
 " Debug (leader d)
 nnoremap <leader>de :action Debug<cr>
 nnoremap <leader>dE :action ChooseDebugConfiguration<cr>
@@ -167,7 +167,7 @@ nnoremap <leader>dc :action Resume<cr>
 map <leader>dx :action QuickEvaluateExpression<cr>
 map <leader>dt :action EvaluateExpression<cr>
 map <leader>dw :action Debugger.AddToWatch<cr>
- 
+
 " Code navigation (leader c)
 nnoremap <leader>cd :action GotoDeclaration<cr>
 nnoremap <leader>ct :action GotoTypeDeclaration<cr>
@@ -183,7 +183,7 @@ nnoremap <leader>cx :action FileStructurePopup<CR>
 nnoremap <leader>cb :action CompileDirty<CR>
 nnoremap <leader>cp :action ParameterInfo<CR>
 nnoremap <leader>ck :action QuickImplementations<CR>
- 
+
 " Refactoring (leader r)
 map <leader>re :action Refactorings.QuickListPopupAction<CR>
 map <leader>rn :action RenameElement<cr>
@@ -198,7 +198,7 @@ map <leader>ri :action Inline<cr>
 map <leader>rs :action ChangeSignature<cr>
 map <leader>ra :action AnonymousToInner<cr>
 map <leader>rm :action Move<cr>
- 
+
 " Source generation (leader s)
 nnoremap <leader>sa :action Generate<CR>
 nnoremap <leader>sc :action GenerateConstructor<cr>
@@ -207,31 +207,31 @@ nnoremap <leader>se :action GenerateEquals<cr>
 nnoremap <leader>so :action OverrideMethods<cr>
 nnoremap <leader>sn :action NewClass<cr>
 nnoremap <leader>sf :action NewFile<cr>
- 
+
 " Errors and diagnostics (leader e)
 map <leader>en :action GotoNextError<cr>
 map <leader>ep :action GotoPreviousError<cr>
- 
+
 " Git (leader g)
 map <leader>gd :action Compare.LastVersion<cr>
 map <leader>gn :action NextDiff<cr>
 map <leader>gp :action PreviousDiff<cr>
- 
+
 " Display Modes (leader m)
 map <leader>md :action ToggleDistractionFreeMode<cr>
 map <leader>mz :action ToggleZenMode<cr>
 map <leader>mf :action ToggleFullScreen<cr>
- 
+
 "========for forward and back cursor to last change
 map <leader>b :action Back<cr>
 map <leader>n :action Forward<cr>
- 
+
 "toggle (leader t)===========
 map <leader>th :action ToggleInlineHintsAction<cr>
- 
+
 " for select text auto
 map , :action EditorSelectWord<cr>
- 
+
 " INSERT MODE
 inoremap jk <Esc>
 inoremap <a-s> <Del>
@@ -244,11 +244,11 @@ inoremap <a-k> <ESC>:m .-2<cr>==gi
 inoremap <a-j> <ESC>:m .+1<cr>==gi
 "inoremap jj <Esc>
 "inoremap kk <Esc>
- 
+
 " NORMAL Mode
 nnoremap m :tabnext<CR>
 nnoremap M :tabp<CR>
- 
+
 " VISUAL MODE
 vnoremap jk <Esc>
 "--  Select all
@@ -278,8 +278,15 @@ set multicursor
 set textobj-entire
 set commentary
 set easymotion
-"     set trackactionids
- 
+"    set trackactionids
+" console logger shortcut
+nnoremap <leader>cla : action com.github.bgomar.consolelogger.add1<cr>
+nnoremap <leader>clb : action com.github.bgomar.consolelogger.add2<cr>
+nnoremap <leader>clc : action com.github.bgomar.consolelogger.add3<cr>
+nnoremap <leader>cld : action com.github.bgomar.consolelogger.add4<cr>
+nnoremap <leader>cle : action com.github.bgomar.consolelogger.add5<cr>
+nnoremap <leader>clf : action com.github.bgomar.consolelogger.add6<cr>
+nnoremap <leader>clg : action com.github.bgomar.consolelogger.add7<cr>
 "obj-entire==========
 let g:argtextobj_pairs="[:],(:),<:>"
 " Easymotion settings
@@ -294,14 +301,14 @@ set ruler		" show the cursor position all the time
 set termbidi
 map <leader>vi <Action>(FileStructurePopup)
 map \ :vsplit<cr>
- 
+
 " Which-key settings
 set which-key
 let g:WhichKey_FontSize = 16
 let g:WhichKey_CommandColor = "#41ead4"
 let g:WhichKey_PrefixColor = "#f335b2"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
- 
+
 let g:WhichKeyDesc_leader = "<leader> Leader key"
 let g:WhichKeyDesc_easymotion = "s Jump with Easymotion"
 let g:WhichKeyDesc_leader_deleteargument = "<leader>x Delete function argument"
@@ -312,10 +319,10 @@ let g:WhichKeyDesc_leader_changequotes = "<leader>z Change inside quotes"
 let g:WhichKeyDesc_leader_changeword = "<leader>c Change whole word"
 let g:WhichKeyDesc_leader_newline = "<leader>o New line in normal mode"
 let g:WhichKeyDesc_leader_newprevline = "<leader>O New line before in normal mode"
- 
+
 let g:WhichKeyDesc_leader_CursorMoveBack = "<leader>b backe cursor to last"
 let g:WhichKeyDesc_leader_CursorMoveForward = "<leader>n forward cursor to last"
- 
+
 " Windows and buffers (leader w)
 let g:WhichKeyDesc_leader_window = "<leader>w Window actions"
 let g:WhichKeyDesc_window_splitvertical = "<leader>wv Split vertically"
@@ -323,15 +330,15 @@ let g:WhichKeyDesc_window_splithorizontal = "<leader>ws Split horizontally"
 let g:WhichKeyDesc_window_splitundo = "<leader>wc Unsplit"
 let g:WhichKeyDesc_window_movetooppositetabgroup = "<leader>wp Move editor to opposite tab group"
 let g:WhichKeyDesc_window_editinnewwindow = "<leader>wn Edit in new window"
- 
+
 " Folds
 let g:WhichKeyDesc_fold_collapseall = "| Collapse all folds"
 let g:WhichKeyDesc_fold_expandall = "-- Expand all folds"
 let g:WhichKeyDesc_fold_toggle = "za Toggle fold under the cursor"
- 
+
 " Macros and registers
 let g:WhichKeyDesc_leader_executequickmacro = "<leader>q Execute macro stored in 'q' register"
- 
+
 " Finder (leader f)
 let g:WhichKeyDesc_leader_finder = "<leader>f Finder actions"
 let g:WhichKeyDesc_finder_class = "<leader>fe Find class"
@@ -347,7 +354,7 @@ let g:WhichKeyDesc_finder_replace = "<leader>fr Find and replace in current file
 let g:WhichKeyDesc_finder_replaceinfiles = "<leader>fR Find and replace in files"
 let g:WhichKeyDesc_finder_clipboard = "<leader>fx Find in clipboard"
 let g:WhichKeyDesc_finder_todo = "<leader>ft Find in TODO list"
- 
+
 " Views (leader v)
 let g:WhichKeyDesc_leader_views = "<leader>v View actions"
 let g:WhichKeyDesc_views_project = "<leader>vf Project view (Files)"
@@ -360,7 +367,7 @@ let g:WhichKeyDesc_views_debug = "<leader>vd Debug view"
 let g:WhichKeyDesc_views_todo = "<leader>vo TODO view"
 let g:WhichKeyDesc_views_copilotchat = "<leader>vc Copilot chat"
 let g:WhichKeyDesc_views_close = "<leader>vq Close view"
- 
+
 " Debug (leader d)
 let g:WhichKeyDesc_leader_debug = "<leader>d Debug actions"
 let g:WhichKeyDesc_debug_debug = "<leader>de Debug"
@@ -379,7 +386,7 @@ let g:WhichKeyDesc_debug_continue = "<leader>dc Continue"
 let g:WhichKeyDesc_debug_quickevaluate = "<leader>dx Evaluate selected expression"
 let g:WhichKeyDesc_debug_evaluate = "<leader>dt EvaluaTe expression"
 let g:WhichKeyDesc_debug_watch = "<leader>dw Add to watch"
- 
+
 " Code navigation (leader c)
 let g:WhichKeyDesc_leader_code = "<leader>c Code actions"
 let g:WhichKeyDesc_code_gotodeclaration = "<leader>cd Go to declaration"
@@ -395,7 +402,7 @@ let g:WhichKeyDesc_code_filestructure = "<leader>cx Show file structure"
 let g:WhichKeyDesc_code_build = "<leader>cb Build"
 let g:WhichKeyDesc_code_parameterinfo = "<leader>cp Parameter info"
 let g:WhichKeyDesc_code_QuickImplementations="<leader>ck Quick Implementations peek"
- 
+
 " Refactoring (leader r)
 let g:WhichKeyDesc_leader_refactor = "<leader>r Refactoring actions"
 let g:WhichKeyDesc_refactor_showactions = "<leader>re Show actions"
@@ -411,7 +418,7 @@ let g:WhichKeyDesc_refactor_inline = "<leader>ri Inline"
 let g:WhichKeyDesc_refactor_changesignature = "<leader>rs Change signature"
 let g:WhichKeyDesc_refactor_anonymoustoinner = "<leader>ra Anonymous To inner"
 let g:WhichKeyDesc_refactor_move = "<leader>rm Move"
- 
+
 " Source generation (leader s)
 let g:WhichKeyDesc_leader_source = "<leader>s Source generation actions"
 let g:WhichKeyDesc_source_actions = "<leader>sa Show source generation actions"
@@ -421,24 +428,32 @@ let g:WhichKeyDesc_source_equals = "<leader>se Generate equals and hashCode"
 let g:WhichKeyDesc_source_override = "<leader>so Override methods"
 let g:WhichKeyDesc_source_newclass = "<leader>sn New class"
 let g:WhichKeyDesc_source_newfile = "<leader>sf New file"
- 
+
 " Errors and diagnostics (leader e)
 let g:WhichKeyDesc_leader_error = "<leader>e Error and diagnostics actions"
 let g:WhichKeyDesc_error_next = "<leader>en Go to next error"
 let g:WhichKeyDesc_error_previous = "<leader>ep Go to previous error"
- 
+
 " Git (leader g)
 let g:WhichKeyDesc_leader_git = "<leader>g Git actions"
 let g:WhichKeyDesc_leader_diff = "<leader>gd Show differences"
 let g:WhichKeyDesc_leader_nextdiff = "<leader>gn Next difference"
 let g:WhichKeyDesc_leader_previousdiff = "<leader>gp Previous difference"
- 
+
 " Display Modes (leader m)
 let g:WhichKeyDesc_leader_display = "<leader>m Display modes"
 let g:WhichKeyDesc_display_distractionfreemode = "<leader>md Toggle distraction free mode"
 let g:WhichKeyDesc_display_zenmode = "<leader>mz Toggle Zen mode"
 let g:WhichKeyDesc_display_fullscreen = "<leader>mf Toggle full screen"
- 
+" Console logger (leader cl) (need install console logger plugin)
+let g:WhichKeyDesc_console_log="<leader>cl console log
+et g:WhichKeyDesc_console_log1="<leader>cla console log 1"
+let g:WhichKeyDesc_console_log2="<leader>clb console log 2"
+let g:WhichKeyDesc_console_log3="<leader>clc console log 3"
+let g:WhichKeyDesc_console_log4="<leader>cld console log 4"
+let g:WhichKeyDesc_console_log5="<leader>cle console log 5"
+let g:WhichKeyDesc_console_log6="<leader>clf console log 6"
+let g:WhichKeyDesc_console_log7="<leader>clg console log 7"
 "me config
 nnoremap <leader>ww :w<CR>
 nnoremap <leader>wq :wq<CR>
